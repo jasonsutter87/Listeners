@@ -1,0 +1,51 @@
+<div class="container">
+  <h1>Welcome new User!</h1>
+</div>
+<div class="container">
+  <div class="col-sm-10">
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+  <form action='/users' method='POST'>
+   <fieldset class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" id="first_name" placeholder="First name">
+  </fieldset>
+  
+  <fieldset class="form-group">
+    <label for="user">UserName</label>
+    <input type="text" class="form-control" id="username" placeholder="Username">
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="exampleInputEmail1">Email address</label>
+    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <small class="text-muted">We'll never share your email with anyone else.</small>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="exampleInputPassword1">Password</label>
+    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="exampleTextarea">About me</label>
+    <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="About me"></textarea>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="InputFile">Upload profile photo</label>
+    <input type="file" class="form-control-file" id="InputFile" >
+  </fieldset>
+
+  <div class="checkbox">
+   <label>
+      <input type="checkbox">Do you agree to sign a NDA every time you join a session?
+    </label>
+      <br>
+      <a href="https://en.wikipedia.org/wiki/Non-disclosure_agreement">More about NDAs here</a>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div><br><br><br><br>
