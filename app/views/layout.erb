@@ -7,6 +7,7 @@
     See: http://necolas.github.com/normalize.css/
   -->
   <link rel="stylesheet" href="/css/normalize.css">
+  <script src="https://apis.google.com/js/platform.js" async defer></script>
   <!--
     application.css is where you put your styles
   -->
@@ -27,9 +28,13 @@
 
   <link rel="stylesheet" href="/css/application.css">
   <link rel="stylesheet" href="/css/styles.css">
+  <script async defer
+      src="https://maps.googleapis.com/maps/api/js?key=<%= ENV['GOOGLE_SECRET_KEY'] %>&callback=initMap">
+  </script>
 
+<!-- AIzaSyBnSwWguEjo-qfT4vGSZdOg_xWX9XM7BWY -->
 
-  <title></title>
+  <title>Listeners</title>
 </head>
 <body>
   <nav class="navbar navbar-default">
