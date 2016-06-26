@@ -6,10 +6,10 @@ require 'faker'
 end
 
 50.times do
-	u = rand(0..30)
-	l = rand(0..30)
-	if u != l 
-		ListenerSession.create(user_id: u, listener_id: l)
+	u = rand(1..19)
+	l = rand(1..19)
+	if u != l
+		Listeners.create(listenee_id: User.find(u), listener_id: User.find(l))
 	end
 end
 
