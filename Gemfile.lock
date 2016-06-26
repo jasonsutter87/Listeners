@@ -40,11 +40,7 @@ GEM
     mini_portile2 (2.1.0)
     minitest (5.9.0)
     multi_json (1.12.1)
-<<<<<<< HEAD
     nokogiri (1.6.7)
-=======
-    nokogiri (1.6.8)
->>>>>>> 0a643cc314bd93977028fc88a3f404e7a81484ff
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
     pg (0.18.4)

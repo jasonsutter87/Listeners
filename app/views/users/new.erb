@@ -1,3 +1,14 @@
+<!-- <input type="text" name ="user[username]" placeholder="Username">
+    </div>
+    <div>
+      <input type="text" name ="user[email]" placeholder="Email">
+    </div>
+    <div>
+      <input type="password" name="user[password]" placeholder="Password">
+    </div>
+    <div>
+      <input type="submit" value"Sign Up" formaction="/users" formmethod="post"> -->
+
 <div class="container">
   <h1>Welcome new User!</h1>
 </div>
@@ -9,38 +20,38 @@
   <form action='/users' method='POST'>
    <fieldset class="form-group">
     <label for="first_name">First Name</label>
-    <input type="text" class="form-control" id="first_name" placeholder="First name">
+    <input type="text" class="form-control" id="first_name"  name="user[first_name]"placeholder="First name">
   </fieldset>
   
   <fieldset class="form-group">
     <label for="user">UserName</label>
-    <input type="text" class="form-control" id="username" placeholder="Username">
+    <input type="text" class="form-control" id="username" name="user[username]" placeholder="Username">
   </fieldset>
 
   <fieldset class="form-group">
-    <label for="exampleInputEmail1">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email"  name ="user[email]" placeholder="Enter email">
     <small class="text-muted">We'll never share your email with anyone else.</small>
   </fieldset>
 
   <fieldset class="form-group">
-    <label for="exampleInputPassword1">Password</label>
-    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="Password" name="user[password]" placeholder="Password">
   </fieldset>
 
   <fieldset class="form-group">
-    <label for="exampleTextarea">About me</label>
-    <textarea class="form-control" id="exampleTextarea" rows="3" placeholder="About me"></textarea>
+    <label for="Textarea">About me</label>
+    <textarea class="form-control" id="Textarea" rows="3"  name="user[aboutme]" placeholder="About me"></textarea>
   </fieldset>
 
   <fieldset class="form-group">
     <label for="InputFile">Upload profile photo</label>
-    <input type="file" class="form-control-file" id="InputFile" >
+    <input type="file"  name="user[profile_photo]" class="form-control-file" id="InputFile" >
   </fieldset>
 
   <div class="checkbox">
    <label>
-      <input type="checkbox">Do you agree to sign a NDA every time you join a session?
+      <input type="checkbox" name ="user[agree]">Do you agree to sign a NDA every time you join a session?
     </label>
       <br>
       <a href="https://en.wikipedia.org/wiki/Non-disclosure_agreement">More about NDAs here</a>
