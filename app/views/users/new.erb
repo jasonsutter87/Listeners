@@ -1,0 +1,57 @@
+<!-- <input type="text" name ="user[username]" placeholder="Username">
+    </div>
+    <div>
+      <input type="text" name ="user[email]" placeholder="Email">
+    </div>
+    <div>
+      <input type="password" name="user[password]" placeholder="Password">
+    </div>
+    <div>
+      <input type="submit" value"Sign Up" formaction="/users" formmethod="post"> -->
+
+<div class="container">
+  <h1>Welcome new User!</h1>
+</div>
+<div class="container">
+  <div class="col-sm-10">
+  <% if @error %>
+    <%= @error %>
+  <% end %>
+  <form action='/users' method='POST'>
+   <fieldset class="form-group">
+    <label for="first_name">First Name</label>
+    <input type="text" class="form-control" id="first_name"  name="user[first_name]"placeholder="First name">
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="user">UserName</label>
+    <input type="text" class="form-control" id="username" name="user[username]" placeholder="Username">
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="email">Email address</label>
+    <input type="email" class="form-control" id="email"  name ="user[email]" placeholder="Enter email">
+    <small class="text-muted">We'll never share your email with anyone else.</small>
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="password">Password</label>
+    <input type="password" class="form-control" id="Password" name="user[password]" placeholder="Password">
+  </fieldset>
+
+  <fieldset class="form-group">
+    <label for="Textarea">About me</label>
+    <textarea class="form-control" id="Textarea" rows="3"  name="user[about_me]" placeholder="About me"></textarea>
+  </fieldset>
+
+  <div class="checkbox">
+   <label>
+      <input type="checkbox" name ="user[agree]">Do you agree to sign a NDA every time you join a session?
+    </label>
+      <br>
+      <a href="https://en.wikipedia.org/wiki/Non-disclosure_agreement">More about NDAs here</a>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>
+</div><br><br><br><br>
