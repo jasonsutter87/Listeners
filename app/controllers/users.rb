@@ -19,6 +19,11 @@ post "/users" do
 end
 
 
+get "/users/:id" do
+  @user = current_user
+  erb :"/users/show"
+end
+
 ### sign in page
 get '/authorization' do
   erb :'/authorization/authorization'
