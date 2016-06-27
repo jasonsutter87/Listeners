@@ -1,5 +1,11 @@
+
 function initMap() {
-      var myLatLng = {lat: 37.784701, lng: -122.397783};
+  var loggedin;
+  $.ajax({
+   url: "/logged_in",
+   success: function(response){
+      loggedin = response
+        var myLatLng = {lat: 37.784701, lng: -122.397783};
 
       var mapDiv = document.getElementById('map');
       var map = new google.maps.Map(mapDiv, {
@@ -7,43 +13,38 @@ function initMap() {
           zoom: 14
       });
 
-    var marker = new google.maps.Marker({
-    position: myLatLng,
-    map: map,
-    title: 'Hello World!'
-  });
-}
-
- function onSignIn(googleUser) {
-        // Useful data for your client-side scripts:
-        var profile = googleUser.getBasicProfile();
-        console.log("ID: " + profile.getId()); // Don't send this directly to your server!
-        console.log('Full Name: ' + profile.getName());
-        console.log('Given Name: ' + profile.getGivenName());
-        console.log('Family Name: ' + profile.getFamilyName());
-        console.log("Image URL: " + profile.getImageUrl());
-        console.log("Email: " + profile.getEmail());
-
-        // The ID token you need to pass to your backend:
-        var id_token = googleUser.getAuthResponse().id_token;
-        console.log("ID Token: " + id_token);
-      };
-
-function onSignIn(googleUser) {
-  var profile = googleUser.getBasicProfile();
-  console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
-  console.log('Name: ' + profile.getName());
-  console.log('Image URL: ' + profile.getImageUrl());
-  console.log('Email: ' + profile.getEmail());
-}
 
 
-function signOut() {
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function () {
-      console.log('User signed out.');
-    });
-  }
+        var contentString = '<div id="content">'+
+            '<div id="siteNotice">'+
+            '</div>'+
+            '<h1 id="firstHeading" class="firstHeading">DBC</h1>'+
+            '<div id="bodyContent">'+
+            '<p><b>DBC</b>, also referred to as <b>Devboot camp</b>, is a coding ' +
+            'bootcamp in san francisco </p>'+
+            '(last visited June 22, 2009).</p>'+
+            '</div>'+
+            '</div>';
+
+        var infowindow = new google.maps.InfoWindow({
+          content: contentString
+        });
+
+        var marker;
+        if (loggedin){
+          console.log("jahskjdhkajsh");
+          marker = new google.maps.Marker({
+            position: myLatLng,
+            map: map,
+            title: 'Devboot Camp (DBC)'
+          });
+          marker.addListener('click', function() {
+            infowindow.open(map, marker);
+          });
+        }
+    }});
+
+    }
 
 
 
