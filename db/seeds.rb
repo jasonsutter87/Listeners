@@ -13,5 +13,8 @@ end
 	end
 end
 
-# rand(37.7...37.788249)
-# rand(-122.4...-122.393421)
+
+20.times do
+  Locations.create(lat: rand(37.7...37.788249), long: rand(-122.4...-122.393421), description: Faker::Lorem.paragraph)
+end
+

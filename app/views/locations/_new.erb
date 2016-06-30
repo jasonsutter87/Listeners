@@ -1,0 +1,45 @@
+<div class="col-lg-10">
+  <form action='/locations' method='post'>
+    <fieldset class="form-group">
+      <label for="name">Name</label>
+      <input type="text" name="restaurant[name]" class="form-control" id="name" placeholder="Enter a name for a restaurant">
+
+    </fieldset>
+
+    <fieldset class="form-group">
+      <label for="cuisine">Cuisine</label>
+      <input type="text" name="restaurant[cuisine]" class="form-control" id="cuisine" placeholder="Enter a Cuisine">
+    </fieldset>
+
+
+    <fieldset class="form-group">
+      <label for="address">Address</label>
+      <input type="text"  name="restaurant[address]"class="form-control" id="address" placeholder="Enter an address">
+    </fieldset>
+
+
+    <fieldset class="form-group">
+      <label for="city">City</label>
+      <input type="text"  name="restaurant[city]" class="form-control" id="city" placeholder="Enter a city">
+    </fieldset>
+
+
+    <fieldset class="form-group">
+      <label for="state">State</label>
+      <input type="text" name="restaurant[state]" class="form-control" id="state" placeholder="Enter a state">
+    </fieldset>
+
+
+    <fieldset class="form-group">
+      <label for="zip">Zip</label>
+      <input type="text"  name="restaurant[zip]" class="form-control" id="zip" placeholder="Enter a zip code">
+    </fieldset>
+
+
+    <input type="hidden" name="restaurant[user_id]" value="<%= current_user.id %>">
+
+
+     <input type='submit' value='Create Restaurant' class="btn btn-danger btn-lg">
+  </form>
+</div>
+

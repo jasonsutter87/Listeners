@@ -1,7 +1,9 @@
-def index
-  if params[:search].present?
-    @locations = Location.near(params[:search], 50, :order => :distance)
-  else
-    @locations = Location.all
-  end
+get '/locations/new' do
+  erb :'/locations/_new'
+end
+
+# create a new restraurant
+post '/locations' do
+   p params
+   redirect '/'
 end

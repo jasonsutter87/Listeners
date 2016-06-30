@@ -1,19 +1,21 @@
-get "/users" do
-	erb :'users/index'
+get '/users' do
+  erb :'users/index'
 end
 
-
-get "/users/new" do
-	erb :'users/new'
+# registration route
+get '/users/new' do
+  erb :'users/new'
 end
-
 
 post "/users" do
   @user = User.new(params[:user])
+
+  @error = @user.errors.full_messages
+
   if @user.save
-    redirect "/authorization"
+    redirect "/"
   else
-    @error = "Invalid information, double check your email is correct or that you have not already created an account with this email"
+    @error = "Sorry, but that email has already been taken."
     erb :"/users/new"
   end
 end
@@ -31,7 +33,8 @@ end
 
 post "/authorization" do
   @user = User.find_by(email: params[:user][:email])
-  if @user.authenticate(params[:user][:password])
+
+  if @user && @user.authenticate(params[:user][:password])
     session[:user_id] = @user.id
     redirect "/"
   else
@@ -44,4 +47,3 @@ get "/signout" do
   session[:user_id] = nil
   redirect "/"
 end
-

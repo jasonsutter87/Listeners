@@ -3,11 +3,17 @@
 	<h4>Where you can hire someone to listen to your thoughts on..</h4>
 </center>
 
-
+<br><br>
 <div id='map-container'>
+<% if current_user %>
+  <center>
+   <a href="/locations/new" type="button" class="btn btn-danger btn-lg">Add A New Listeners</button></a>
+  </center>
+<% end %>
+<br>
+
+
 	<div id="map"></div>
 </div><br><br><br><br>
-
-
 
 
