@@ -14,6 +14,8 @@ gem 'bcrypt'
 gem 'rake'
 gem 'shotgun'
 
+
+gem 'geocoder'
 gem 'dotenv'
 group :test do
   gem 'shoulda-matchers'

@@ -13,8 +13,6 @@ function initMap() {
           zoom: 14
       });
 
-
-
         var contentString = '<div id="content">'+
             '<div id="siteNotice">'+
             '</div>'+
@@ -32,7 +30,6 @@ function initMap() {
 
         var marker;
         if (loggedin){
-          console.log("jahskjdhkajsh");
           marker = new google.maps.Marker({
             position: myLatLng,
             map: map,
@@ -45,8 +42,6 @@ function initMap() {
     }});
 
     }
-
-
 
 
 
