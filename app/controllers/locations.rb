@@ -12,13 +12,13 @@ end
 
 # create a new location
 post '/locations' do
-  p params
   @locations = Locations.new(params[:location])
   if @locations.save
     if request.xhr?
-      p Geocoder.coordinates(params[:location][:address])
-        redirect '/'
+        @coordinates = Geocoder.coordinates(params[:location][:address])
+        erb :index
     else
+       @coordinates = Geocoder.coordinates(params[:location][:address])
        redirect '/'
     end
   end
