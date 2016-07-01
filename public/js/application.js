@@ -1,15 +1,113 @@
+var loggedin;
+var myLatLng = {lat: 37.784701, lng: -122.397783};
+var map;
+var marker;
+var images = [];
+var saturation = 0;
+var newSaturation;
+var allMarkers = [];
+var allInfoWindows = [];
+
+
+var styles = [
+  {
+    stylers: [
+      { hue: "#00ffe6" },
+      { saturation: -20 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }
+];
+
+
+
+
+
+
+// function initMap() {
+
+//   map = new google.maps.Map(document.getElementById('map'), {
+//     center: myLatLng,
+//     zoom: 10,
+//     styles: styleArray
+//   });
+
+//   marker = new google.maps.Marker({
+//     position: myLatLng,
+//     map: map,
+//     title: 'Drag Me!',
+//     draggable: true,
+//     icon: '/Markers/brown_MarkerD.png'
+//   });
+//   google.maps.event.addListener(marker, 'dragend', function (event) {
+//     var lat = event.latLng.lat();
+//     var long = event.latLng.lng();
+//     var latlng = {lat: lat, lng: long};
+//     findQuakes(latlng);
+//   });
+
+//   infoWindow = new google.maps.InfoWindow(), marker;
+//   infoWindow.setContent('<strong>Drag and Drop</strong> to find nearby earthquakes (within ~100miles) in the past 30 days!')
+//   marker.addListener('click', function() {
+//     infoWindow.open(map, marker);
+//   });
+//   infoWindow.open(map, marker);
+
+//   allMarkers = [];
+//   allMarkers.push(marker);
+
+
+// }
+
+
+
+
+
+
+
+var myStyles = [
+  {
+    stylers: [
+      { hue: "##0040ff" },
+      { saturation: -50 }
+    ]
+  },{
+    featureType: "road",
+    elementType: "geometry",
+    stylers: [
+      { lightness: 100 },
+      { visibility: "simplified" }
+    ]
+  },{
+    featureType: "road",
+    elementType: "labels",
+    stylers: [
+      { visibility: "off" }
+    ]
+  }
+];
 
 function initMap() {
-  var loggedin;
   $.ajax({
    url: "/logged_in",
    success: function(response){
-    loggedin = response
-    var myLatLng = {lat: 37.784701, lng: -122.397783};
-    var myLatLng2 = {lat: 37.787757, lng:  -122.407832};
+    loggedin = response;
     var mapDiv = document.getElementById('map');
     var map = new google.maps.Map(mapDiv, {
       center: myLatLng,
+      styles: myStyles,
       zoom: 14
     });
 
@@ -24,16 +122,7 @@ function initMap() {
     '</div>'+
     '</div>';
 
-    var contentString1 = '<div id="content">'+
-    '<div id="siteNotice">'+
-    '</div>'+
-    '<h1 id="firstHeading" class="firstHeading">Union Square</h1>'+
-    '<div id="bodyContent">'+
-    '<p>Union Square, is located in SF </p>'+
-    '(last visited June 22, 2009).</p>'+
-    '</div>'+
-    '</div>';
-
+   
     function addInfoWindow(content) {
       return new google.maps.InfoWindow({
         content: content
@@ -41,34 +130,38 @@ function initMap() {
     }
 
     var infowindow = addInfoWindow(contentString);
-    var infowindow1 = addInfoWindow(contentString1);
-
+   
 
     var marker;
     if (loggedin){
       marker = new google.maps.Marker({
         position: myLatLng,
         map: map,
-        title: 'Devboot Camp (DBC)'
-      });
-
-
-      marker2 = new google.maps.Marker({
-        position: myLatLng2,
-        map: map,
-        title: 'Devboot Camp (DBC)'
       });
 
       marker.addListener('click', function() {
         infowindow.open(map, marker);
       });
 
-      marker2.addListener('click', function() {
-        infowindow1.open(map, marker2);
-      });
+     
     }
+
+
+
+    
   }});
 }
+
+
+
+
+
+
+
+
+
+
+
 
 $(document).ready(function() {
   eventListeners();
@@ -78,23 +171,6 @@ $(document).ready(function() {
 
 function eventListeners(){
   addListener();
-  removeForm();
-
-}
-
-
-function removeForm(){
-   $('#new-listener-button').on('submit', function(event){
-    debugger;
-    event.preventDefault();
-     // $.ajax({
-     //    type: "post",
-     //    url: "/locations",
-     //  }).done(function(response){
-     //    console.log(response)
-     //  }
-
-   });
 }
 
 
@@ -102,77 +178,17 @@ function removeForm(){
 function addListener(){
   $('#new-listener').on('click', function(event){
     event.preventDefault();
-    // debugger;
-     $.ajax({
-        type: "get",
-        url: "/locations/new",
-      }).done(function(response){
-       $('#new-listener').hide();
-       $('#form-div').html(response);
-          });
-
+    $.ajax({
+      type: "get",
+      url: "/locations/new",
+    }).done(function(response){
+     $('#new-listener').hide();
+     $('#form-div').html(response);
+   });
   });
 };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// $(document).ready(function() {
-//   $('#post_form').on('submit', function(event){
-//     event.preventDefault();
-//     var data =  $( this ).serialize();
-//     $.ajax({
-//         type: "post",
-//         url: "/posts",
-//         data: data
-//       }).done(function(response){
-//         $( '#post_form' ).each(function(){
-//               this.reset();
-//           });
-//         $("#posts").prepend(response)
-//       });
-//   })
-
-
-//   $('.post').on('submit', function(event){
-//     var $form = $(this);
-//     var $path = $($form).find('span.like_count');
-//     var articleUrl = ("#post_like").attr('action');
-
-
-//     event.preventDefault();
-//     $.ajax({
-//     url: $path,
-//     method: "put",
-//     dataType: 'json',
-//   })
-//     .done(function(response){
-
-//     $path.html(1);
-
-//      })
-
-
-
-//   })
-
-// })
 
 
 
