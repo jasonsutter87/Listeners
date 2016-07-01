@@ -47,7 +47,7 @@ function initMap() {
         position: myLatLng,
         animation: google.maps.Animation.DROP,
         map: map,
-      });     
+      });
     }
 
 
@@ -88,29 +88,28 @@ function addListener(){
 
 
 function removeForm(){
-  $('#new-listener-button').on('submit', function(event){
-    debugger
+  $('body').on('submit','#new-listener-form', function(event){
     event.preventDefault();
+    var newPostData = $(this).serialize();
+    console.log(newPostData);
     $.ajax({
-      type: "get",
+      type: "post",
       url: "/locations",
+      data: newPostData
     }).done(function(response){
-     $('#form-div').hide();
-     $('#new-listener').html(response);
+    marker = new google.maps.Marker({
+        position: response,
+        animation: google.maps.Animation.DROP,
+        map: map,
+      });
+    $('#new-listener-form').hide();
+    $('#new-listener').show();
+    // $('#form-div-button').html(response);
+    allMarkers.push(marker);
+
    });
   });
 };
-
-
-
-function addPins(){
-   marker = new google.maps.Marker({
-          position: myLatLng,
-          map: map,
-    });
-};
-
-
 
 
 
