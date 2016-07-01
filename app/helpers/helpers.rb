@@ -1,3 +1,5 @@
+# require 'json'
+
 helpers do
   def current_user
     @current_user ||= User.find_by(id: session[:user_id])
@@ -9,4 +11,11 @@ helpers do
     # return formatted_time.to_i
     return formatted_time * -1
   end
+
+  def coor_to_json(coor)
+      # HAVE [lat, long]
+      # WANT {lat: value, long: value} as JSON
+      {lat: coor[0], lng: coor[1]}
+  end
+
 end
