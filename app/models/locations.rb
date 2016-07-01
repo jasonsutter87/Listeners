@@ -1,2 +1,4 @@
-geocoded_by :address
-after_validation :geocode, :if => :address_changed?
+
+class Locations < ActiveRecord::Base
+  validates :address, presence: true
+end
