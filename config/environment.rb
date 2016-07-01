@@ -23,6 +23,10 @@ require 'erb'
 require 'faker'
 require 'json'
 require 'dotenv'
+require 'geocoder'
+
+
+
 
 Dotenv.load
 # Some helper constants for path-centric logic
