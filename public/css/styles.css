@@ -1,6 +1,6 @@
  #map {
-  width: 100%;
-  height: 100%;
+  width: 99%;
+  height: 99%;
 }
 
 #map-container{
@@ -14,11 +14,23 @@ body, html {
   width: 100%;
 }
 
-
+  #floating-panel {
+    position: absolute;
+    top: 10px;
+    left: 25%;
+    z-index: 5;
+    background-color: #fff;
+    padding: 5px;
+    border: 1px solid #999;
+    text-align: center;
+    font-family: 'Roboto','sans-serif';
+    line-height: 30px;
+    padding-left: 10px;
+  }
 .container {
-	width: 80%;
-	margin: center;
-	margin: 0 auto;
+  width: 80%;
+  margin: center;
+  margin: 0 auto;
 }
 
 div.fixed {
@@ -27,3 +39,8 @@ div.fixed {
     right: 50%;
     text-align: center;
    }
+
+
+textarea {
+    resize: none;
+}

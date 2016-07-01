@@ -1,0 +1,14 @@
+<div class="col-lg-10">
+  <form action='/locations' method='post' id="new-listener-form">
+    <fieldset class="form-group">
+      <label for="name">Please enter a public locations address</label>
+      <input type="text" name="location[address]" class="form-control" id="name" placeholder="Please enter a public locations">
+    </fieldset>
+
+    <input type="hidden" name="location[op]" value="<%= current_user.id %>">
+    <center>
+       <input id="new-listener-button" type='submit' value='Create a new location' class="btn btn-danger btn-lg">
+     </center>
+  </form>
+</div>
+
