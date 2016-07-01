@@ -51,6 +51,9 @@ function initMap() {
     }
 
 
+
+
+
   allMarkers = [];
   allMarkers.push(marker);
 
