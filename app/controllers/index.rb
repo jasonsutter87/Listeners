@@ -1,5 +1,5 @@
 get '/' do
-  # @pins = Locations.all
+  @pins = Locations.all
   erb :index
 end
 
