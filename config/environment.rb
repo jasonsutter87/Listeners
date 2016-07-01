@@ -20,7 +20,7 @@ require 'sinatra'
 require "sinatra/reloader" if development?
 
 require 'erb'
-require 'faker'
+# require 'faker'
 require 'json'
 require 'dotenv'
 require 'geocoder'
